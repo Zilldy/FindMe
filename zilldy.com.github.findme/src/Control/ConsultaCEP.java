@@ -19,7 +19,7 @@ public class ConsultaCEP {
         HttpRequest request = HttpRequest.newBuilder().uri(endereco).build();
 
         try {
-            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             return new Gson().fromJson(response.body(), Endereco.class);
         } catch (Exception e) {
             throw new RuntimeException("Não consegui obter um endereço a partir desse CEP: " + cep);

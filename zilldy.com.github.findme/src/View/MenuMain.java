@@ -9,9 +9,9 @@ import java.util.Scanner;
 
 public class MenuMain {
 
-    public void menuMain() throws IOException {
+    public void menuMain() {
         Scanner tc = new Scanner(System.in);
-        String cep = "";
+        String cep;
         ConsultaCEP consultaCep = new ConsultaCEP();
 
         System.out.print("Digite um CEP para consulta: ");
