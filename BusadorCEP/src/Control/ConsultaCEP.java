@@ -1,10 +1,13 @@
+package Control;
+
+import Model.Endereco;
 import com.google.gson.Gson;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+
 
 public class ConsultaCEP {
 
@@ -15,13 +18,12 @@ public class ConsultaCEP {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder().uri(endereco).build();
 
-        HttpResponse<String> response = null;
         try {
-            response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        } catch (IOException | InterruptedException e) {
+            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+            return new Gson().fromJson(response.body(), Endereco.class);
+        } catch (Exception e) {
             throw new RuntimeException("Não consegui obter um endereço a partir desse CEP: " + cep);
         }
 
-        return new Gson().fromJson(response.body(), Endereco.class);
     }
 }

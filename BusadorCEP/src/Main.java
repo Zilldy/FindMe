@@ -1,10 +1,11 @@
+import View.MenuMain;
+
+import java.io.IOException;
+
 public class Main {
-    public static void main(String[] args) {
-        ConsultaCEP consultaCep = new ConsultaCEP();
+    public static void main(String[] args) throws IOException {
+        MenuMain menu = new MenuMain();
 
-        Endereco novoEndereco = consultaCep.buscaEndereco("06010170");
-
-        System.out.println(novoEndereco);
-        
+        menu.menuMain();
     }
 }
